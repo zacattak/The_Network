@@ -10,6 +10,9 @@ class PostsService {
         const newPosts = response.data.posts.map(pojo => new Post(pojo))
         AppState.posts = newPosts
     }
+    setActiveProfile(post) {
+        AppState.activeProfile = post
+    }
 
 }
 

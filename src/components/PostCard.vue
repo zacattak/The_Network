@@ -4,7 +4,17 @@
         <div class="card-body d-flex justify-content-between">
             <div>
                 <p class="card-title fs-5">{{ post.body }}</p>
-                <button class="btn btn-secondary">😉</button>
+
+                <router-link :to="{ name: 'Profile' }">
+
+                    <button class="btn btn-secondary">
+
+                        😉 Open Profile
+
+                    </button>
+
+                </router-link>
+
             </div>
             <!-- <img class="" :src="post.imgUrl" :alt="post.creator"> -->
         </div>
@@ -14,14 +24,21 @@
 
 <script>
 import { Post } from '../models/Post';
+import { postsService } from '../services/PostsService';
+import { logger } from '../utils/Logger';
 
 
 export default {
     props: {
         post: { type: Post, required: true }
     },
-    setup() {
-        return {}
+    setup(props) {
+        return {
+            setActiveProfile() {
+                logger.log(props.post)
+                postsService.setActiveProfile(props.post)
+            }
+        }
     }
 }
 </script>
