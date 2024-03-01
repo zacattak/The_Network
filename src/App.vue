@@ -2,10 +2,17 @@
   <header>
     <Navbar />
   </header>
+
   <main>
+
+
+
     <router-view />
+
   </main>
+
   <footer>
+
   </footer>
 </template>
 
