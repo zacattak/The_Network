@@ -1,12 +1,29 @@
 <template>
-  <div class="container">
+  <div class="container mt-3">
 
     <section class="row">
 
       <div class="col-12">
 
         <div v-for="post in posts" :key="post.id" class="">
-          iteratize me capn
+
+          <div class="card mb-3">
+            <img :src="post.imgUrl" class="card-img-top" :alt="post.creator">
+            <div class="card-body d-flex justify-content-between">
+              <div>
+                <p class="card-title fs-5">{{ post.body }}</p>
+                <button class="btn btn-secondary">😉</button>
+              </div>
+              <!-- <img class="" :src="post.imgUrl" :alt="post.creator"> -->
+            </div>
+          </div>
+
+
+
+
+
+          <!-- iteratize me capn -->
+
         </div>
 
       </div>
