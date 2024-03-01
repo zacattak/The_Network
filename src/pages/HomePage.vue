@@ -5,7 +5,9 @@
 
       <div class="col-12">
 
-        {{ posts }}
+        <div v-for="post in posts" :key="post.id" class="">
+          iteratize me capn
+        </div>
 
       </div>
 
