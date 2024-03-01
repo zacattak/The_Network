@@ -7,23 +7,14 @@
 
         <div v-for="post in posts" :key="post.id" class="">
 
-          <div class="card mb-3">
-            <img :src="post.imgUrl" class="card-img-top" :alt="post.creator">
-            <div class="card-body d-flex justify-content-between">
-              <div>
-                <p class="card-title fs-5">{{ post.body }}</p>
-                <button class="btn btn-secondary">😉</button>
-              </div>
-              <!-- <img class="" :src="post.imgUrl" :alt="post.creator"> -->
-            </div>
-          </div>
+
 
 
 
 
 
           <!-- iteratize me capn -->
-
+          <PostCard :post="post" />
         </div>
 
       </div>
@@ -38,6 +29,7 @@ import { computed, onMounted } from 'vue';
 import { postsService } from '../services/PostsService';
 import Pop from '../utils/Pop';
 import { AppState } from '../AppState.js'
+import PostCard from '../components/PostCard.vue';
 
 
 
@@ -46,20 +38,20 @@ export default {
   setup() {
     async function getPosts() {
       try {
-        await postsService.getPosts()
-      } catch (error) {
-        Pop.error(error)
+        await postsService.getPosts();
+      }
+      catch (error) {
+        Pop.error(error);
       }
     }
-
     onMounted(() => {
-      getPosts()
-    })
-
+      getPosts();
+    });
     return {
       posts: computed(() => AppState.posts)
-    }
-  }
+    };
+  },
+  components: { PostCard }
 }
 
 
