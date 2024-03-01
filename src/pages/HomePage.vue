@@ -1,16 +1,24 @@
 <template>
-  <div>
-    <div>
+  <div class="container">
+
+    <section class="row">
+
+      <div class="col-12">
+
+        {{ posts }}
+
+      </div>
 
 
-    </div>
+    </section>
   </div>
 </template>
 
 <script>
-import { onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
 import { postsService } from '../services/PostsService';
 import Pop from '../utils/Pop';
+import { AppState } from '../AppState.js'
 
 
 
@@ -30,7 +38,7 @@ export default {
     })
 
     return {
-
+      posts: computed(() => AppState.posts)
     }
   }
 }
