@@ -5,9 +5,9 @@
             <div>
                 <p class="card-title fs-5">{{ post.body }}</p>
 
-                <router-link :to="{ name: 'Profile' }">
+                <router-link :to="{ name: 'Profile', params: { profileId: post.creatorId } }">
 
-                    <button class="btn btn-secondary">
+                    <button @click="setActiveProfile()" class="btn btn-secondary">
 
                         😉 Open Profile
 

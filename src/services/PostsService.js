@@ -11,6 +11,7 @@ class PostsService {
         AppState.posts = newPosts
     }
     setActiveProfile(post) {
+        // logger.log('profile activated', data)
         AppState.activeProfile = post
     }
 
