@@ -1,6 +1,17 @@
 <template>
   <div class="container mt-3">
 
+    <section class="row">
+      <div class="col-12 my-2">
+        <h1>Posts</h1>
+      </div>
+
+      <div class="col-12">
+        <PostForm />
+      </div>
+
+    </section>
+
     <section class="row justify-content-center">
 
       <div class="col-md-7">
@@ -30,7 +41,7 @@ import { postsService } from '../services/PostsService';
 import Pop from '../utils/Pop';
 import { AppState } from '../AppState.js'
 import PostCard from '../components/PostCard.vue';
-
+import { logger } from '../utils/Logger';
 
 
 
@@ -51,7 +62,7 @@ export default {
       posts: computed(() => AppState.posts)
     };
   },
-  components: { PostCard }
+  components: { PostCard, PostForm }
 }
 
 

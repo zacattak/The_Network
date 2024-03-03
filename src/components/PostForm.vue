@@ -1,17 +1,16 @@
 <template>
 
-<form @submit.prevent="createPost()">
+<form v-if="account.id" @submit.prevent="createPost()">
 
 <div class="mb-3">
-  <label for="postImgUrl">ImgUrl</label>
+  <label for="imgUrl">ImgUrl</label>
 
-  <input v-model="editablePostData.imgUrl" id="postImgUrl" name="imgUrl" type="url" required maxlength="500">
+  <input v-model="editablePostData.imgUrl" id="imgUrl" name="imgUrl" type="url" required maxlength="500">
 </div>
 
 <div class="mb-3">
-  <label for="postBody">Body</label>
-  <input v-model="editablePostData.body" id="postBody" name="body" type="text" required minlength="1"
-    maxlength="500">
+  <label for="body">Body</label>
+  <input v-model="editablePostData.body" id="body" name="body" type="text" maxlength="500">
 </div>
 
 
@@ -26,10 +25,11 @@
 
 <script>
 
-import {ref} from 'vue';
+import {computed, ref} from 'vue';
 import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop.js';
 import {postsService} from '../services/PostsService.js'
+import{AppState} from '../AppState.js'
 
 
 export default {
@@ -41,6 +41,8 @@ export default {
 
         return {}
         editablePostData,
+
+        account: computed (() => AppState.account),
 
         async createPost(){
             try {
@@ -59,5 +61,9 @@ export default {
 
 
 <style lang="scss" scoped>
+
+label {
+  display: block;
+}
 
 </style>
