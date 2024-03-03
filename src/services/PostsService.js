@@ -26,6 +26,13 @@ class PostsService {
         AppState.activeProfile = post
     }
 
+    async createPost(postData) {
+        const response = await api.post('api/posts', postData)
+        logger.log('CREATED POST', response.data)
+        const newPost = new Post(response.data)
+        AppState.posts.push(newPost)
+    }
+
 
 
 }

@@ -23,7 +23,7 @@
 
                 </router-link>
 
-                <p>{{ post.likeIds.length }}</p>
+                <p>Likes:{{ post.likeIds.length }}</p>
 
                 </div>
 
