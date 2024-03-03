@@ -47,7 +47,7 @@
 <script>
 import { computed, ref, watch } from 'vue';
 import { AppState } from '../AppState';
-import { Pop } from '../utils/Pop.js'
+import Pop from '../utils/Pop';
 import { accountService } from '../services/AccountService.js';
 export default {
   setup() {
@@ -77,7 +77,7 @@ export default {
 
 <style scoped>
 img {
-  max-width: 100px;
+  max-width: 100%;
 }
 
 label {
