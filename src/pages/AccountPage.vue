@@ -48,23 +48,22 @@
 import { computed, ref, watch } from 'vue';
 import { AppState } from '../AppState';
 import { Pop } from '../utils/Pop.js'
-import { accountService } from '../services/AccountService';
+import { accountService } from '../services/AccountService.js';
 export default {
   setup() {
     // const editableAccountData = ref({})
-    const account = computed(()=>AppState.account)
+    const account = computed(() => AppState.account)
     const editableAccountData = ref({})
-    
-
+    // NOTE watch will run a callback function whenever a computed/ref/reactive value changes
+    // 1st argument: what am I watching
+    // 2nd argument: what should I do when the watched value changes
+    // 3rd argument: should I run my callback function on page load
     watch(account, () => { editableAccountData.value = { ...account.value } }, { immediate: true })
 
     return {
       editableAccountData,
-
-      // account: computed(() => AppState.account),
       account,
-
-      async updateAccount(){
+      async updateAccount() {
         try {
           await accountService.updateAccount(editableAccountData.value)
         } catch (error) {
