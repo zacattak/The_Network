@@ -6,6 +6,7 @@ export class Post {
         this.createdAt = data.createdAt
         this.creatorId = data.creatorId
         this.creator = data.creator
+        this.creatorImgUrl = data.creator.picture
 
     }
 }
