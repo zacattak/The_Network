@@ -12,6 +12,12 @@
       </div>
       </div>
     </section>
+    <section class="row">
+        <div v-for="profilePost in posts" class="col-md-4">
+            <PostCard :post="profilePost" />
+
+        </div>
+    </section>
   </div>
 </template>
 
@@ -24,6 +30,7 @@ import { profilesService } from '../services/ProfilesService.js';
 import { useRoute } from 'vue-router';
 import { AppState } from '../AppState.js';
 import { postsService } from '../services/PostsService.js';
+import PostCard from '../components/PostCard.vue';
 
 
 export default {
@@ -57,10 +64,12 @@ export default {
         })
 
         return {
-            profile: computed(()=>AppState.activeProfile)
+            profile: computed(()=> AppState.activeProfile),
+            posts: computed(()=> AppState.posts)
         }
 
-    }
+    },
+    components: { PostCard }
 }
 </script>
 
