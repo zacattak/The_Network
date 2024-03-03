@@ -1,9 +1,9 @@
 <template>
   <div class="container mt-3">
 
-    <section class="row">
+    <section class="row justify-content-center">
 
-      <div class="col-12">
+      <div class="col-md-6">
 
         <div v-for="post in posts" :key="post.id" class="">
 

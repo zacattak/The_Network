@@ -16,9 +16,10 @@
                         😉 Open Profile
 
                     </button> -->
-
-                    <img class="creator-picture selectable" :src="post.creator.picture" :alt="post.creator.name" role="button"
+                    
+                    <img class="creator-picture selectable" :src="post.creator.picture" :alt="post.creator.name" role="button" @click="setActiveProfile()"
                     :title="`Go to ${post.creator.name}'s profile!`">
+                   
 
                 </router-link>
 

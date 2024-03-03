@@ -15,6 +15,19 @@ class PostsService {
     //     AppState.activeProfile = post
     // }
 
+    async getPostsByCreatorId(profileId) {
+        const response = await api.get(`api/posts?creatorId=${profileId}`)
+        logger.log('GOT POSTS', response.data)
+        const newPosts = response.data.posts.map(pojo => new Post(pojo))
+        AppState.posts = newPosts
+    }
+
+    setActiveProfile(post) {
+        AppState.activeProfile = post
+    }
+
+
+
 }
 
 export const postsService = new PostsService()
