@@ -3,7 +3,7 @@
 <div class="container-fluid">
     <section class="row">
       <div class="col-12">
-        <h1 class="m-3">{{ promo.tall }}</h1>
+        <h1 class="m-3">{{ promo.banner }}</h1>
       </div>
     </section>
   </div>
