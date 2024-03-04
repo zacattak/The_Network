@@ -9,6 +9,9 @@
       <div class="col-12">
         <h1><i v-if="profile.graduated" class="mdi mdi-bird"></i> {{ profile.name }}</h1>
         <p>{{ profile.bio }}</p>
+        <p>linkedin: {{ profile.linkedin }}</p>
+        <p>github: {{ profile.github }}</p>
+        <p>class: {{ profile.class }}</p>
       </div>
       </div>
     </section>

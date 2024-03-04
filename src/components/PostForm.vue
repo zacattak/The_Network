@@ -10,9 +10,8 @@
 
 <div class="mb-3">
   <label for="body">Body</label>
-  <input v-model="editablePostData.body" id="body" name="body" type="text" maxlength="500">
+  <input v-model="editablePostData.body" id="body" type="text" maxlength="500">
 </div>
-
 
 
 <div class="text-end mb-3">
@@ -39,21 +38,23 @@ export default {
 
 
 
-        return {}
-        editablePostData,
+        return {
+            editablePostData,
 
-        account: computed (() => AppState.account),
+            account: computed (() => AppState.account),
 
-        async createPost(){
+            async createPost(){
             try {
-                logger.log('creating post', editablePostData.value)
-                await postsService.createPost(editablePostData.value)
-                editablePostData.value = {}
+            logger.log('creating post', editablePostData.value)
+            await postsService.createPost(editablePostData.value)
+            editablePostData.value = {}
             } catch (error) {
-                Pop.error(error)
-                
-            }
+            Pop.error(error)
+        
         }
+        }
+    }
+       
 
     }
 }

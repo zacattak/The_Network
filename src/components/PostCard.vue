@@ -25,6 +25,8 @@
 
                 <p>Likes:{{ post.likeIds.length }}</p>
 
+                <button v-if="post.creatorId == account.id" @click="deletePost()" class="btn btn-danger">Delete</button>
+
                 </div>
 
             </div>
@@ -38,6 +40,11 @@
 import { Post } from '../models/Post';
 import { postsService } from '../services/PostsService';
 import { logger } from '../utils/Logger';
+import Pop from '../utils/Pop.js';
+import { computed, onMounted } from 'vue';
+import { AppState } from '../AppState';
+// import { useRouter } from 'vue-router';
+
 
 
 export default {
@@ -45,10 +52,49 @@ export default {
         post: { type: Post, required: true }
     },
     setup(props) {
+        // const = useRouter()
+
+
+        // async function getPostById(){
+        //     try {
+        //         const postId = route.params.postId
+        //         await postsService.getPostById(postId)
+        //     } catch (error) {
+        //         Pop.error(error)
+        //     }
+        // }
+        // onMounted(()=>{
+        //     getPostById()
+        // })
+
         return {
+            account: computed(() => AppState.account),
+
+
             setActiveProfile() {
                 logger.log(props.post)
                 postsService.setActiveProfile(props.post)
+            },
+
+            async deletePost(){
+                try {
+                const wantsToDelete = await Pop.confirm('Wait a sec, are you sure?')
+                if(!wantsToDelete){
+                    return
+                }
+
+                const postId = route.params.postId
+
+                logger.log('deleting post', postId)
+                
+                await postsService.deletePost(postId)
+
+                Pop.success('Post was deleted')
+                router.push({ name: 'Posts' })
+
+                } catch (error) {
+                    Pop.error(error)
+                }
             }
         }
     }

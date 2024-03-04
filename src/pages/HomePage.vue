@@ -6,6 +6,21 @@
         <h1>Posts</h1>
       </div>
 
+      <div class="col-12 d-flex align-items-center my-2">
+        
+        <button @click="changePage(currentPage - 1)" class="btn btn-outline-dark" :disabled="currentPage == 1">
+          Previous
+        </button>
+
+        <p class="mb-0 mx-3 fs-4">Page {{ currentPage }} of {{ totalPages }}</p>
+        
+        <button @click="changePage(currentPage + 1)" class="btn btn-outline-dark"
+          :disabled="currentPage == totalPages || currentPage == 500">
+          Next
+        </button>
+
+      </div>
+
       <div class="col-12">
         <PostForm />
       </div>
@@ -41,6 +56,7 @@ import { postsService } from '../services/PostsService';
 import Pop from '../utils/Pop';
 import { AppState } from '../AppState.js'
 import PostCard from '../components/PostCard.vue';
+import PostForm from '../components/PostForm.vue'
 import { logger } from '../utils/Logger';
 
 
@@ -59,7 +75,9 @@ export default {
       getPosts();
     });
     return {
-      posts: computed(() => AppState.posts)
+      posts: computed(() => AppState.posts),
+      currentPage: computed(()=>AppState.currentPage),
+      totalPages: computed(()=>AppState.totalPages)
     };
   },
   components: { PostCard, PostForm }

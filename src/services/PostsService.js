@@ -9,6 +9,11 @@ class PostsService {
         logger.log('posts had', response.data)
         const newPosts = response.data.posts.map(pojo => new Post(pojo))
         AppState.posts = newPosts
+        AppState.currentPage = response.data.page
+        AppState.totalPages = response.data.totalPages
+
+
+
     }
     // setActiveProfile(post) {
     //     // logger.log('profile activated', data)
@@ -22,15 +27,32 @@ class PostsService {
         AppState.posts = newPosts
     }
 
-    setActiveProfile(post) {
-        AppState.activeProfile = post
-    }
-
     async createPost(postData) {
         const response = await api.post('api/posts', postData)
         logger.log('CREATED POST', response.data)
         const newPost = new Post(response.data)
         AppState.posts.push(newPost)
+
+
+    }
+
+    async deletePost(postId) {
+        const response = await api.delete(`api/posts/${postId}`)
+        logger.log('POST GONE', response.data)
+    }
+
+    // async getPostById(postId) {
+    //     const response = await api.get(`api/posts/${postId}`)
+    //     logger.log('got post by id', response.data)
+    //     const newPost = new Post(response.data)
+    //     AppState.activePost = newPost
+    // }
+
+
+    setActiveProfile(post) {
+        AppState.activeProfile = post
+
+
     }
 
 
