@@ -41,6 +41,15 @@ class PostsService {
         logger.log('POST GONE', response.data)
     }
 
+    async changePage(pageNumber) {
+        const response = await api.get(`api/posts?page=${pageNumber}`)
+        logger.log('changing page', response.data)
+        const newPosts = response.data.results.map(pojo => new Post(pojo))
+        AppState.posts = newPosts
+        AppState.currentPage = response.data.page
+        AppState.totalPages = response.data.totalPages
+    }
+
     // async getPostById(postId) {
     //     const response = await api.get(`api/posts/${postId}`)
     //     logger.log('got post by id', response.data)

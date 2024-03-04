@@ -77,7 +77,14 @@ export default {
     return {
       posts: computed(() => AppState.posts),
       currentPage: computed(()=>AppState.currentPage),
-      totalPages: computed(()=>AppState.totalPages)
+      totalPages: computed(()=>AppState.totalPages),
+      async changePage(pageNumber){
+        try {
+          await postsService.changePage(pageNumber)
+        } catch (error) {
+         Pop.error(error) 
+        }
+      }
     };
   },
   components: { PostCard, PostForm }
