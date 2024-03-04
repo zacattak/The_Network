@@ -4,8 +4,9 @@
         :title="`Created at ${post.createdAt}`">
         <div class="card-body d-flex justify-content-between">
             <div>
-
+                
                 <p class="card-title fs-5">{{ post.body }}</p>
+              
 
                 <div class="d-flex justify-content-between">
 
@@ -68,6 +69,7 @@ export default {
         // })
 
         return {
+            // post: computed (() => AppState.activePost ),
             account: computed(() => AppState.account),
 
 

@@ -15,6 +15,14 @@
             <input v-model="editableAccountData.name" required class="w-100" type="text" id="name">
           </div>
 
+          
+          <div class="mb-3">
+            <label for="bio">Bio</label>
+            <textarea v-model="editableAccountData.bio" id="bio" cols="20" class="w-100"></textarea>
+          </div>
+
+
+
           <div class="mb-3">
             <label for="picture">Picture</label>
             <input v-model="editableAccountData.picture" required class="w-100" type="text" id="picture">
@@ -25,9 +33,20 @@
             <input v-model="editableAccountData.coverImg" class="w-100" type="text" id="coverImg">
           </div>
 
+
           <div class="mb-3">
-            <label for="bio">Bio</label>
-            <textarea v-model="editableAccountData.bio" id="bio" cols="20" class="w-100"></textarea>
+            <label for="email">Email</label>
+            <input v-model="editableAccountData.email" id="email" required class="w-100">
+          </div>
+
+          <div class="mb-3">
+            <label for="github">github</label>
+            <input v-model="editableAccountData.github" required class="w-100" type="text" id="github">
+          </div>
+
+          <div>
+            <label for="resume">resume</label>
+            <input v-model="editableResumeData" id="resume" required class="w-100">
           </div>
 
           <div class="mb-3">
