@@ -15,6 +15,16 @@
       </div>
       </div>
     </section>
+
+    <div class="col-12">
+        <h1>Posts</h1>
+      </div>
+      <div class="col-12 d-flex align-items-center my-2">
+        <button class="btn btn-outline-dark">Previous</button>
+        <p class="mb-0 mx-3 fs-4">Page {{ currentProfilePage }} of {{ totalProfilePages }}</p>
+        <button class="btn btn-outline-dark">Next</button>
+      </div>
+
     <section class="row">
         <div v-for="profilePost in posts" class="col-md-4">
             <PostCard :post="profilePost" />
@@ -68,7 +78,18 @@ export default {
 
         return {
             profile: computed(()=> AppState.activeProfile),
-            posts: computed(()=> AppState.posts)
+            posts: computed(()=> AppState.posts),
+            currentProfilePage: computed(()=> AppState.currentProfilePage),
+            totalProfilePages: computed(() => AppState.totalProfilePages),
+
+            async changeProfilePage(pageNumber){
+                try {
+                    await profilesService.changeProfilePage(pageNumber)
+                } catch (error) {
+                    Pop.error(error)
+                }
+            }
+
         }
 
     },

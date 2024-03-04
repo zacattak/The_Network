@@ -12,7 +12,7 @@
   </main>
 
   <footer>
-
+    <Promo />
   </footer>
 </template>
 
@@ -20,6 +20,7 @@
 import { computed } from 'vue'
 import { AppState } from './AppState'
 import Navbar from './components/Navbar.vue'
+import Promo from './components/Promo.vue'
 
 export default {
   setup() {

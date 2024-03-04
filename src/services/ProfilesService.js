@@ -9,6 +9,18 @@ class ProfilesService {
         logger.log('GOT PROFILE', response.data)
         const newProfile = new Profile(response.data)
         AppState.activeProfile = newProfile
+
+    }
+
+    async changeProfilePage(pageNumber) {
+        const response = await api.get(`api/posts?creatorId=${creatorId}&page=${pageNumber}`)
+        logger.log('changing page', response.data)
+        const newPosts = response.data.posts.map(pojo => new Post(pojo))
+        AppState.posts = newPosts
+        AppState.currentProfilePage = response.data.page
+        AppState.totalProfilePages = response.data.totalPages
+
+
     }
 }
 
