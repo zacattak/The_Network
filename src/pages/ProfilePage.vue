@@ -45,6 +45,7 @@ import { useRoute } from 'vue-router';
 import { AppState } from '../AppState.js';
 import { postsService } from '../services/PostsService.js';
 import PostCard from '../components/PostCard.vue';
+import { Profile } from '../models/Profile.js';
 
 
 export default {
@@ -83,9 +84,9 @@ export default {
             currentPage: computed(()=> AppState.currentPage),
             totalPages: computed(() => AppState.totalPages),
 
-            async changeProfilePage(pageNumber){
+            async changeProfilePage(activeProfile){
                 try {
-                    await profilesService.changeProfilePage(pageNumber)
+                    await profilesService.changeProfilePage(activeProfile)
                 } catch (error) {
                     Pop.error(error)
                 }
