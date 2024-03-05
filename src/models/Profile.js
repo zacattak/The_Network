@@ -10,6 +10,7 @@ export class Profile {
         this.github = data.github
         this.graduated = data.graduated
         this.class = data.class
+
     }
 
 }

@@ -2,6 +2,7 @@ import { api } from "./AxiosService.js"
 import { AppState } from "../AppState.js"
 import { logger } from "../utils/Logger.js"
 import { Profile } from "../models/Profile.js"
+import { Post } from "../models/Post.js"
 
 class ProfilesService {
     async getProfileById(profileId) {
@@ -12,8 +13,8 @@ class ProfilesService {
 
     }
 
-    async changeProfilePage(profileId) {
-        const response = await api.get(`/api/profiles/${profileId}/posts`)
+    async changeProfilePage(pageNumber) {
+        const response = await api.get(`api/profiles/?page=${pageNumber}`)
         logger.log('changing page', response.data)
         const newPosts = response.data.posts.map(pojo => new Post(pojo))
         AppState.posts = newPosts
