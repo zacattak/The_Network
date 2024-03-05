@@ -4,9 +4,11 @@
         :title="`Created at ${post.createdAt}`">
         <div class="card-body d-flex justify-content-between">
             <div>
-                
-                <p class="card-title fs-5">{{ post.body }}</p>
-              
+
+
+                <p class="card-title fs-5 selectable">{{ post.body }}</p>
+
+                 
 
                 <div class="d-flex justify-content-between">
 
@@ -26,7 +28,7 @@
 
                 <p>Likes:{{ post.likeIds.length }}</p>
 
-                <button v-if="post.creatorId == account.id" @click="deletePost()" class="btn btn-danger">Delete</button>
+                <button v-if="post.creatorId == account.id" @click="deletePost(post.id)" class="btn btn-danger">Delete</button>
 
                 </div>
 
@@ -41,10 +43,10 @@
 import { Post } from '../models/Post';
 import { postsService } from '../services/PostsService';
 import { logger } from '../utils/Logger';
-// import Pop from '../utils/Pop.js';
+import Pop from '../utils/Pop.js';
 import { computed, onMounted } from 'vue';
 import { AppState } from '../AppState';
-// import { useRoute, useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
 
 
@@ -54,9 +56,9 @@ export default {
     },
     setup(props) {
 
-        // const route = useRoute()
+        const route = useRoute()
     
-        // const router = useRouter()
+        const router = useRouter()
 
 
         // async function getPostById(){
@@ -81,26 +83,26 @@ export default {
                 postsService.setActiveProfile(props.post)
             },
 
-            // async deletePost(){
-            //     try {
-            //     const wantsToDelete = await Pop.confirm('Wait a sec, are you sure?')
-            //     if(!wantsToDelete){
-            //         return
-            //     }
+            async deletePost(postId){
+                try {
+                const wantsToDelete = await Pop.confirm('Wait a sec, are you sure?')
+                if(!wantsToDelete){
+                    return
+                }
 
-            //     const postId = route.params.postId
+                // const postId = route.params.postId
 
-            //     logger.log('deleting post', postId)
+                logger.log('deleting post')
                 
-            //     await postsService.deletePost(postId)
+                await postsService.deletePost(postId)
 
-            //     Pop.success('Post was deleted')
-            //     router.push({ name: 'Posts' })
+                Pop.success('Post was deleted')
+                router.push({ name: 'Home' })
 
-            //     } catch (error) {
-            //         Pop.error(error)
-            //     }
-            // }
+                } catch (error) {
+                    Pop.error(error)
+                }
+            }
         }
     }
 }

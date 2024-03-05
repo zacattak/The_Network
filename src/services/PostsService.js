@@ -28,6 +28,7 @@ class PostsService {
 
     }
 
+
     async createPost(postData) {
         const response = await api.post('api/posts', postData)
         logger.log('CREATED POST', response.data)
@@ -37,12 +38,12 @@ class PostsService {
 
     }
 
-    // async deletePost(postId) {
-    //     const response = await api.delete(`api/posts/${postId}`)
-    //     logger.log('POST GONE', response.data)
+    async deletePost(postId) {
+        const response = await api.delete(`api/posts/${postId}`)
+        logger.log('POST GONE', response.data)
 
 
-    // }
+    }
 
     async changePage(pageNumber) {
         const response = await api.get(`api/posts?page=${pageNumber}`)
