@@ -20,5 +20,7 @@ export const AppState = reactive({
 
   totalProfilePages: 0,
 
-  promos: []
+  promos: [],
+
+  searchQuery: ''
 })

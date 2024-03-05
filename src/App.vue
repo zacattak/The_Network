@@ -28,7 +28,7 @@ export default {
       appState: computed(() => AppState)
     }
   },
-  components: { Navbar }
+  components: { Navbar, Promo }
 }
 </script>
 <style lang="scss">

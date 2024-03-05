@@ -67,7 +67,15 @@ class PostsService {
 
 
     }
-
+    async searchPosts(searchQuery) {
+        const response = await api.get(`/api/posts?query=${searchQuery}`)
+        logger.log('searching', response.data)
+        AppState.searchQuery = searchQuery
+        const newPosts = response.data.posts.map(pojo => new Post(pojo))
+        AppState.posts = newPosts
+        AppState.currentPage = response.data.page
+        AppState.totalPages = response.data.totalPages
+    }
 
 
 }
