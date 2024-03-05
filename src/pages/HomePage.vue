@@ -21,7 +21,7 @@
       <div v-if="savedSearch"  class="col-12 d-flex align-items-center">
 
         <p class="fs-3">Results: "{{ savedSearch }}"</p>
-        <button class="fs-3">Clear</button>
+        <button class="fs-3" @click="clearSearch()">Clear</button>
 
       </div>
 
@@ -120,6 +120,17 @@ export default {
           await postsService.searchPosts(editableSearchQuery.value)
         } catch (error) {
           Pop.error(error)
+        }
+      },
+
+      async clearSearch(){
+        try {
+          editableSearchQuery.value = ''
+          postsService.clearSearch()
+          await getPosts()
+        } catch (error) {
+          Pop.error(error)
+          
         }
       }
     };

@@ -77,6 +77,10 @@ class PostsService {
         AppState.totalPages = response.data.totalPages
     }
 
+    clearSearch() {
+        AppState.searchQuery = ''
+    }
+
 
 }
 
