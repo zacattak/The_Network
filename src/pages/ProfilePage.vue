@@ -21,8 +21,9 @@
       </div>
       <div class="col-12 d-flex align-items-center my-2">
         <button class="btn btn-outline-dark">Previous</button>
-        <p class="mb-0 mx-3 fs-4">Page {{ currentProfilePage }} of {{ totalProfilePages }}</p>
-        <button class="btn btn-outline-dark">Next</button>
+        <p class="mb-0 mx-3 fs-4">Page {{ currentPage }} of {{ totalPages }}</p>
+        <button @click="changeProfilePage(currentPage + 1)" class="btn btn-outline-dark"
+          :disabled="currentPage == totalPages || currentPage == 500">>Next</button>
       </div>
 
     <section class="row">
@@ -79,8 +80,8 @@ export default {
         return {
             profile: computed(()=> AppState.activeProfile),
             posts: computed(()=> AppState.posts),
-            currentProfilePage: computed(()=> AppState.currentProfilePage),
-            totalProfilePages: computed(() => AppState.totalProfilePages),
+            currentPage: computed(()=> AppState.currentPage),
+            totalPages: computed(() => AppState.totalPages),
 
             async changeProfilePage(pageNumber){
                 try {

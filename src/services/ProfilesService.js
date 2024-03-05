@@ -12,13 +12,13 @@ class ProfilesService {
 
     }
 
-    async changeProfilePage(pageNumber) {
-        const response = await api.get(`api/posts?creatorId=${creatorId}&page=${pageNumber}`)
+    async changeProfilePage(profileId) {
+        const response = await api.get(`/api/profiles/${profileId}/posts`)
         logger.log('changing page', response.data)
         const newPosts = response.data.posts.map(pojo => new Post(pojo))
         AppState.posts = newPosts
-        AppState.currentProfilePage = response.data.page
-        AppState.totalProfilePages = response.data.totalPages
+        AppState.currentPage = response.data.page
+        AppState.totalPages = response.data.totalPages
 
 
     }
