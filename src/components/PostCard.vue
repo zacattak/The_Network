@@ -41,10 +41,10 @@
 import { Post } from '../models/Post';
 import { postsService } from '../services/PostsService';
 import { logger } from '../utils/Logger';
-import Pop from '../utils/Pop.js';
+// import Pop from '../utils/Pop.js';
 import { computed, onMounted } from 'vue';
 import { AppState } from '../AppState';
-// import { useRouter } from 'vue-router';
+// import { useRoute, useRouter } from 'vue-router';
 
 
 
@@ -53,7 +53,10 @@ export default {
         post: { type: Post, required: true }
     },
     setup(props) {
-        // const = useRouter()
+
+        // const route = useRoute()
+    
+        // const router = useRouter()
 
 
         // async function getPostById(){
@@ -69,7 +72,7 @@ export default {
         // })
 
         return {
-            // post: computed (() => AppState.activePost ),
+      
             account: computed(() => AppState.account),
 
 
@@ -78,26 +81,26 @@ export default {
                 postsService.setActiveProfile(props.post)
             },
 
-            async deletePost(){
-                try {
-                const wantsToDelete = await Pop.confirm('Wait a sec, are you sure?')
-                if(!wantsToDelete){
-                    return
-                }
+            // async deletePost(){
+            //     try {
+            //     const wantsToDelete = await Pop.confirm('Wait a sec, are you sure?')
+            //     if(!wantsToDelete){
+            //         return
+            //     }
 
-                const postId = route.params.postId
+            //     const postId = route.params.postId
 
-                logger.log('deleting post', postId)
+            //     logger.log('deleting post', postId)
                 
-                await postsService.deletePost(postId)
+            //     await postsService.deletePost(postId)
 
-                Pop.success('Post was deleted')
-                router.push({ name: 'Posts' })
+            //     Pop.success('Post was deleted')
+            //     router.push({ name: 'Posts' })
 
-                } catch (error) {
-                    Pop.error(error)
-                }
-            }
+            //     } catch (error) {
+            //         Pop.error(error)
+            //     }
+            // }
         }
     }
 }

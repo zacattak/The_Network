@@ -36,17 +36,17 @@
 
           <div class="mb-3">
             <label for="email">Email</label>
-            <input v-model="editableAccountData.email" id="email" required class="w-100">
+            <input v-model="editableAccountData.email" id="email" class="w-100">
           </div>
 
           <div class="mb-3">
             <label for="github">github</label>
-            <input v-model="editableAccountData.github" required class="w-100" type="text" id="github">
+            <input v-model="editableAccountData.github" class="w-100" type="text" id="github">
           </div>
 
           <div>
             <label for="resume">resume</label>
-            <input v-model="editableResumeData" id="resume" required class="w-100">
+            <input v-model="editableResumeData" id="resume" class="w-100">
           </div>
 
           <div class="mb-3">

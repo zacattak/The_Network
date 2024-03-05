@@ -37,10 +37,12 @@ class PostsService {
 
     }
 
-    async deletePost(postId) {
-        const response = await api.delete(`api/posts/${postId}`)
-        logger.log('POST GONE', response.data)
-    }
+    // async deletePost(postId) {
+    //     const response = await api.delete(`api/posts/${postId}`)
+    //     logger.log('POST GONE', response.data)
+
+
+    // }
 
     async changePage(pageNumber) {
         const response = await api.get(`api/posts?page=${pageNumber}`)
@@ -54,12 +56,12 @@ class PostsService {
 
 
 
-    // async getPostById(postId) {
-    //     const response = await api.get(`api/posts/${postId}`)
-    //     logger.log('got post by id', response.data)
-    //     const newPost = new Post(response.data)
-    //     AppState.activePost = newPost
-    // }
+    async getPostById(postId) {
+        const response = await api.get(`api/posts/${postId}`)
+        logger.log('got post by id', response.data)
+        const newPost = new Post(response.data)
+        AppState.activePost = newPost
+    }
 
 
     setActiveProfile(post) {

@@ -5,7 +5,7 @@
 <div class="mb-3">
   <label for="imgUrl">ImgUrl</label>
 
-  <input v-model="editablePostData.imgUrl" id="imgUrl" name="imgUrl" type="url" required maxlength="500">
+  <input v-model="editablePostData.imgUrl" id="imgUrl" name="imgUrl" type="url" maxlength="500">
 </div>
 
 <div class="mb-3">
