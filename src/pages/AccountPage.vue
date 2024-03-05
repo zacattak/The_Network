@@ -39,14 +39,23 @@
             <input v-model="editableAccountData.email" id="email" class="w-100">
           </div>
 
+
+
           <div class="mb-3">
             <label for="github">github</label>
-            <input v-model="editableAccountData.github" class="w-100" type="text" id="github">
+            <input v-model="editableAccountData.github" class="w-100 link" type="text" id="github">
+          </div>
+
+
+
+          <div>
+            <label for="resume">Resume</label>
+            <input v-model="editableResumeData" id="resume" class="w-100">
           </div>
 
           <div>
-            <label for="resume">resume</label>
-            <input v-model="editableResumeData" id="resume" class="w-100">
+            <label for="class">Class</label>
+            <input v-model="editableClassData" id="class" class="w-100">
           </div>
 
           <div class="mb-3">
@@ -68,15 +77,13 @@ import { computed, ref, watch } from 'vue';
 import { AppState } from '../AppState';
 import Pop from '../utils/Pop';
 import { accountService } from '../services/AccountService.js';
+
 export default {
   setup() {
-    // const editableAccountData = ref({})
+  
     const account = computed(() => AppState.account)
     const editableAccountData = ref({})
-    // NOTE watch will run a callback function whenever a computed/ref/reactive value changes
-    // 1st argument: what am I watching
-    // 2nd argument: what should I do when the watched value changes
-    // 3rd argument: should I run my callback function on page load
+    
     watch(account, () => { editableAccountData.value = { ...account.value } }, { immediate: true })
 
     return {

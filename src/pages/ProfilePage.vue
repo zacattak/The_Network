@@ -12,6 +12,9 @@
         <p>linkedin: {{ profile.linkedin }}</p>
         <p>github: {{ profile.github }}</p>
         <p>class: {{ profile.class }}</p>
+        <p>resume: {{ profile.resume }}</p>
+        <p>email: {{ profile.email }}</p>
+
       </div>
       </div>
     </section>
@@ -84,9 +87,9 @@ export default {
             currentPage: computed(()=> AppState.currentPage),
             totalPages: computed(() => AppState.totalPages),
 
-            async changeProfilePage(activeProfile){
+            async changeProfilePage(profileId){
                 try {
-                    await profilesService.changeProfilePage(activeProfile)
+                    await profilesService.changeProfilePage(profileId)
                 } catch (error) {
                     Pop.error(error)
                 }
