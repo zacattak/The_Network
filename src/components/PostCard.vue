@@ -25,7 +25,7 @@
                    
 
                 </router-link>
-
+                <button @click="likePost(post.id)">LIKE ❤️</button>
                 <p>Likes:{{ post.likeIds.length }}</p>
 
                 <button v-if="post.creatorId == account.id" @click="deletePost(post.id)" class="btn btn-danger">Delete</button>
@@ -76,6 +76,12 @@ export default {
         return {
       
             account: computed(() => AppState.account),
+
+            likePost(postId){
+                logger.log('liking')
+                postsService.likePost(postId)
+
+            },
 
 
             setActiveProfile() {

@@ -70,6 +70,13 @@ class PostsService {
 
 
     }
+
+    async likePost(postId) {
+        const response = await api.post(`api/posts/${postId}/like`)
+        logger.log('liked post', response.data)
+
+    }
+
     async searchPosts(searchQuery) {
         const response = await api.get(`/api/posts?query=${searchQuery}`)
         logger.log('searching', response.data)
