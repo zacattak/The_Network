@@ -1,18 +1,22 @@
 <template>
   <header>
-    <Navbar />
+    <Navbar  />
+    
+    
   </header>
-
+  
   <main>
-
-
-
+    
+    
+    
     <router-view />
-
+    
   </main>
-
+  
   <footer>
+    
     <Promo />
+
   </footer>
 </template>
 
@@ -40,7 +44,7 @@ export default {
 
 
 footer {
-  display: grid;
+  display: fill;
   place-content: center;
   height: 32px;
 }

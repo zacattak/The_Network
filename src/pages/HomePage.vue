@@ -5,7 +5,7 @@
       <div class="col-12 my-2">
         <h1>Posts</h1>
       </div>
-
+    
       <div class="col-12">
         <form @submit.prevent="searchPosts()">
           <div class="input-group mb-3">
@@ -77,6 +77,7 @@ import Pop from '../utils/Pop';
 import { AppState } from '../AppState.js'
 import PostCard from '../components/PostCard.vue';
 import PostForm from '../components/PostForm.vue'
+
 // import { Post } from '../models/Post';
 import { logger } from '../utils/Logger';
 

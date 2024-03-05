@@ -7,7 +7,7 @@ class PromoService {
     async getPromos() {
         const response = await api.get('api/ads')
         logger.log('got ads', response.data)
-        const newPromos = response.data
+        const newPromos = response.data.map(pojo => new Promo(pojo))
         AppState.promos = newPromos
     }
 }
